@@ -3,45 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINX STORE</title>
+    <title>WINX STORE | Concept</title>
     <style>
-        body { font-family: sans-serif; background: #f4f4f4; margin: 0; padding-bottom: 100px; text-align: center; }
-        header { background: #1a1a1a; color: #D4AF37; padding: 20px; border-bottom: 3px solid #D4AF37; }
-        .card { background: #fff; margin: 15px; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .preco { color: #D4AF37; font-size: 22px; font-weight: bold; margin: 10px 0; }
-        .btn { background: #1a1a1a; color: #fff; padding: 12px; width: 100%; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; }
-        .cart-btn { position: fixed; bottom: 0; left: 0; right: 0; background: #25d366; color: #fff; padding: 20px; text-decoration: none; font-size: 18px; font-weight: bold; z-index: 1000; border: none; width: 100%; cursor: pointer; }
+        :root { --gold: #bc9c22; --dark: #000; --gray: #f2f2f2; }
+        body { font-family: 'Times New Roman', serif; background: #fff; margin: 0; padding-bottom: 120px; color: var(--dark); }
+        
+        /* Estilo Carolina Herrera */
+        header { padding: 40px 20px; text-align: center; border-bottom: 1px solid var(--gray); letter-spacing: 4px; }
+        header h1 { margin: 0; font-size: 28px; font-weight: 300; }
+        header p { font-size: 10px; margin-top: 5px; text-transform: uppercase; color: #666; }
+
+        .promo-bar { background: var(--dark); color: #fff; font-size: 10px; padding: 8px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .container { max-width: 1000px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
+        
+        .card { background: #fff; border: 1px solid #efefef; padding: 15px; text-align: left; position: relative; }
+        .card span.new { font-size: 9px; font-weight: bold; letter-spacing: 1px; color: #666; }
+        .card h3 { font-size: 14px; margin: 10px 0 5px; font-weight: 400; height: 40px; }
+        .card .sub { font-size: 11px; color: #888; margin-bottom: 10px; }
+        .card .preco { font-size: 16px; font-weight: bold; margin: 10px 0; }
+        .card .parcela { font-size: 11px; color: #999; }
+        
+        .btn-buy { margin-top: 15px; border: 1px solid var(--dark); background: transparent; color: var(--dark); padding: 10px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; transition: 0.3s; }
+        .btn-buy:hover { background: var(--dark); color: #fff; }
+
+        .cart-fixed { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid var(--gray); padding: 20px; box-sizing: border-box; text-align: center; z-index: 1000; }
+        .btn-checkout { background: var(--dark); color: #fff; padding: 15px 40px; text-decoration: none; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; display: block; }
     </style>
 </head>
 <body>
-    <header><h1>WINX STORE</h1><p>Concept Store 2025</p></header>
+    <div class="promo-bar">Ganhe uma miniatura exclusiva em pedidos acima de R$499</div>
     
-    <div class="card"><h3>Paleta Lux</h3><p class="preco">R$ 89,90</p><button class="btn" onclick="add('Paleta Lux', 89.90)">Adicionar à Sacola</button></div>
-    <div class="card"><h3>Batom Matte Gold</h3><p class="preco">R$ 45,00</p><button class="btn" onclick="add('Batom Matte Gold', 45.00)">Adicionar à Sacola</button></div>
-    <div class="card"><h3>Oud Wood Intense</h3><p class="preco">R$ 459,00</p><button class="btn" onclick="add('Oud Wood Intense', 459.00)">Adicionar à Sacola</button></div>
-    <div class="card"><h3>Blazer Slim Black</h3><p class="preco">R$ 349,00</p><button class="btn" onclick="add('Blazer Slim Black', 349.00)">Adicionar à Sacola</button></div>
-    
-    <button class="cart-btn" onclick="send()">🛒 FINALIZAR NO WHATSAPP: R$ <span id="total">0,00</span></button>
+    <header>
+        <h1>WINX STORE</h1>
+        <p>Beauty & Fragrance Concept</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <span class="new">NOVO</span>
+            <h3>Triple Moisture Serum Foundation</h3>
+            <p class="sub">Base hidratante de luxo</p>
+            <p class="preco">R$ 449,00</p>
+            <p class="parcela">ou 6x de R$ 74,83</p>
+            <button class="btn-buy" onclick="add('Serum Foundation', 449)">Adicionar</button>
+        </div>
+
+        <div class="card">
+            <span class="new">NOVO</span>
+            <h3>Matte Bronzer Couture</h3>
+            <p class="sub">Pó bronzeador hidratante</p>
+            <p class="preco">R$ 419,00</p>
+            <p class="parcela">ou 6x de R$ 69,83</p>
+            <button class="btn-buy" onclick="add('Matte Bronzer', 419)">Adicionar</button>
+        </div>
+
+        <div class="card">
+            <span class="new">MAIS VENDIDO</span>
+            <h3>Oud Wood Intense</h3>
+            <p class="sub">Fragrância sofisticada</p>
+            <p class="preco">R$ 459,00</p>
+            <p class="parcela">ou 6x de R$ 76,50</p>
+            <button class="btn-buy" onclick="add('Oud Wood Intense', 459)">Adicionar</button>
+        </div>
+
+        <div class="card">
+            <span class="new">EXCLUSIVO</span>
+            <h3>Kabuki Buffer Brush</h3>
+            <p class="sub">Pincel polidor de alta precisão</p>
+            <p class="preco">R$ 339,00</p>
+            <p class="parcela">ou 6x de R$ 56,50</p>
+            <button class="btn-buy" onclick="add('Kabuki Brush', 339)">Adicionar</button>
+        </div>
+    </div>
+
+    <div class="cart-fixed">
+        <a href="#" class="btn-checkout" onclick="send()">🛒 Finalizar Pedido: R$ <span id="total">0,00</span></a>
+    </div>
 
     <script>
-        var items = []; 
-        var total = 0;
-        
-        function add(nome, preco) { 
-            items.push(nome); 
-            total = total + preco; 
+        var items = []; var total = 0;
+        function add(n, p) { 
+            items.push(n); total += p; 
             document.getElementById('total').innerHTML = total.toFixed(2).replace('.', ',');
-            alert('Adicionado: ' + nome); 
+            alert('✓ ' + n + ' adicionado ao carrinho'); 
         }
-
         function send() {
-            if (items.length === 0) {
-                alert('Sua sacola está vazia!');
-                return;
-            }
-            var texto = "Olá! Quero fazer o seguinte pedido:\n\n" + items.join('\n') + "\n\nTotal: R$ " + total.toFixed(2);
-            var msg = encodeURIComponent(texto);
-            // Link corrigido sem o "+" e com o seu número
+            if (items.length === 0) return alert('Sua sacola está vazia');
+            var msg = encodeURIComponent("Olá WINX STORE! Gostaria de encomendar:\n\n" + items.join('\n') + "\n\nTotal: R$ " + total.toFixed(2));
             window.location.href = "https://api.whatsapp.com/send?phone=5548999717451&text=" + msg;
         }
     </script>
