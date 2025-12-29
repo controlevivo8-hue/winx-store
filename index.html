@@ -3,96 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINX STORE | Florency Style</title>
+    <title>WINX STORE | Oficial</title>
     <style>
-        body { font-family: sans-serif; margin: 0; background: #f4f4f4; padding-bottom: 80px; }
-        .top-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 11px; text-transform: uppercase; }
-        header { background: #fff; padding: 15px; border-bottom: 1px solid #ddd; text-align: center; }
-        .logo { font-size: 24px; font-weight: bold; letter-spacing: 4px; text-transform: uppercase; }
-        .search-box { width: 90%; padding: 10px; margin: 10px auto; border: 1px solid #ccc; border-radius: 4px; display: block; }
-        .nav-menu { background: #fff; overflow-x: auto; white-space: nowrap; padding: 10px; border-bottom: 1px solid #eee; display: flex; }
-        .nav-menu a { padding: 5px 12px; text-decoration: none; color: #666; font-size: 12px; font-weight: bold; text-transform: uppercase; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
-        .product-card { background: #fff; border: 1px solid #eee; padding: 10px; position: relative; text-align: center; border-radius: 4px; }
-        .off-tag { position: absolute; top: 5px; left: 5px; background: #e60000; color: #fff; font-size: 10px; padding: 3px 6px; border-radius: 2px; font-weight: bold; z-index: 5; }
-        .product-img { width: 100%; height: 130px; object-fit: contain; margin-bottom: 10px; }
-        .product-name { font-size: 11px; height: 30px; overflow: hidden; margin: 5px 0; color: #444; }
-        .price-old { text-decoration: line-through; color: #999; font-size: 10px; display: block; }
-        .price-new { color: #e60000; font-weight: bold; font-size: 15px; margin: 5px 0; display: block; }
-        .btn-buy { background: #28a745; color: #fff; border: none; width: 100%; padding: 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; font-size: 10px; }
-        .cart-float { position: fixed; bottom: 0; width: 100%; background: #000; color: #fff; padding: 18px; text-align: center; font-weight: bold; z-index: 1000; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: #f9f9f9; color: #333; padding-bottom: 80px; }
+        .top-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        header { background: #fff; padding: 15px; text-align: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 26px; font-weight: bold; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; }
+        
+        /* BANNER ROTATIVO */
+        .banner-container { width: 100%; overflow: hidden; position: relative; height: 180px; background: #ddd; }
+        .banner-slide { width: 100%; height: 100%; object-fit: cover; display: none; }
+        .banner-slide.active { display: block; }
+
+        .nav-menu { background: #fff; overflow-x: auto; white-space: nowrap; padding: 12px; border-bottom: 1px solid #eee; display: flex; sticky; top: 70px; }
+        .nav-menu a { padding: 5px 15px; text-decoration: none; color: #555; font-size: 12px; font-weight: bold; text-transform: uppercase; border: 1px solid #eee; margin-right: 5px; border-radius: 20px; }
+        .nav-menu a:hover { background: #000; color: #fff; }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
+        .product-card { background: #fff; border: 1px solid #eee; padding: 12px; position: relative; text-align: center; border-radius: 8px; transition: 0.3s; }
+        .off-tag { position: absolute; top: 8px; left: 8px; background: #e60000; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 4px; font-weight: bold; z-index: 5; }
+        .product-img { width: 100%; height: 140px; object-fit: contain; margin-bottom: 10px; }
+        .product-name { font-size: 12px; height: 32px; overflow: hidden; margin: 5px 0; color: #444; font-weight: 500; }
+        .price-old { text-decoration: line-through; color: #aaa; font-size: 11px; display: block; }
+        .price-new { color: #e60000; font-weight:
+cat << 'EOF' >> index.html
+bold; font-size: 17px; margin: 5px 0; display: block; }
+        .btn-buy { background: #28a745; color: #fff; border: none; width: 100%; padding: 10px; border-radius: 6px; font-weight: bold; text-transform: uppercase; font-size: 11px; cursor: pointer; }
+        footer { background: #fff; padding: 30px 20px; text-align: center; border-top: 1px solid #eee; margin-top: 20px; font-size: 12px; color: #777; }
+        .pay-icons { margin: 15px 0; font-size: 24px; }
+        .footer-links a { color: #777; text-decoration: none; margin: 0 10px; display: inline-block; margin-bottom: 10px; }
+        .cart-float { position: fixed; bottom: 0; width: 100%; background: #000; color: #fff; padding: 20px; text-align: center; font-weight: bold; z-index: 2000; }
     </style>
 </head>
 <body>
-    <div class="top-bar">Enviamos para todo o Brasil! @WINXSTORE</div>
-    <header><h1 class="logo">WINX STORE</h1><input type="text" class="search-box" placeholder="Pesquise aqui..."></header>
-    <div class="nav-menu"><a href="#">Maquiagem</a><a href="#">Skin Care</a><a href="#">Cabelos</a><a href="#">Promoções</a></div>
-    <div class="grid">
-        <div class="product-card">
+    <div class="top-bar">🚚 FRETE GRÁTIS EM COMPRAS ACIMA DE R$ 199</div>
+    <header><div class="logo">WINX STORE</div></header>
+    <div class="banner-container">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80" class="banner-slide active">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&w=800&q=80" class="banner-slide">
+    </div>
+    <div class="nav-menu">
+        <a href="#" onclick="filter('all')">Tudo</a>
+        <a href="#" onclick="filter('make')">Maquiagem</a>
+        <a href="#" onclick="filter('skin')">Skin Care</a>
+    </div>
+    <div class="grid" id="product-grid">
+        <div class="product-card" data-cat="make">
             <div class="off-tag">54% OFF</div>
             <img src="https://m.media-amazon.com/images/I/51wXFp+9-3L._AC_SL1000_.jpg" class="product-img">
             <div class="product-name">Esponja Ruby Rose Glass</div>
             <span class="price-old">R$ 9,95</span><span class="price-new">R$ 4,60</span>
             <button class="btn-buy" onclick="add('Esponja Ruby Rose', 4.60)">Comprar</button>
         </div>
-        <div class="product-card">
-            <div class="off-tag">50% OFF</div>
-            <img src="https://m.media-amazon.com/images/I/41Kx6qF9KRL._AC_SL1000_.jpg" class="product-img">
-            <div class="product-name">Balm Labial Mágico Melu</div>
-            <span class="price-old">R$ 9,95</span><span class="price-new">R$ 4,99</span>
-            <button class="btn-buy" onclick="add('Balm Melu', 4.99)">Comprar</button>
-        </div>
-        <div class="product-card">
-            <div class="off-tag">85% OFF</div>
-            <img src="https://m.media-amazon.com/images/I/41D8V7FmS5L._AC_SL1000_.jpg" class="product-img">
-            <div class="product-name">Delineador Mari Maria Cat</div>
-            <span class="price-old">R$ 46,95</span><span class="price-new">R$ 6,99</span>
-            <button class="btn-buy" onclick="add('Delineador Mari Maria', 6.99)">Comprar</button>
-        </div>
-        <div class="product-card">
+        <div class="product-card" data-cat="skin">
             <div class="off-tag">70% OFF</div>
             <img src="https://m.media-amazon.com/images/I/51p6y-n84TL._AC_SL1000_.jpg" class="product-img">
             <div class="product-name">Primer Max Love Semente de Uva</div>
-            <span class="price-old">R$ 19,90</span><span class="price-new">R$ 5,99</span>
+            <span class="price-old">R$ 19,90</span><span class="price-new">R$
+
+cat << 'EOF' >> index.html
+5,99</span>
             <button class="btn-buy" onclick="add('Primer Max Love', 5.99)">Comprar</button>
         </div>
-        <div class="product-card">
-            <div class="off-tag">25% OFF</div>
-            <img src="https://m.media-amazon.com/images/I/41Osh96V8wL._AC_SL1000_.jpg" class="product-img">
-            <div class="product-name">Pó Compacto Matte Max Love</div>
-            <span class="price-old">R$ 7,95</span><span class="price-new">R$ 5,99</span>
-            <button class="btn-buy" onclick="add('Po Max Love', 5.99)">Comprar</button>
-        </div>
-        <div class="product-card">
-            <div class="off-tag">70% OFF</div>
-            <img src="https://m.media-amazon.com/images/I/51f93mP64LL._AC_SL1000_.jpg" class="product-img">
-            <div class="product-name">Primer Max Love Pós Sol</div>
-            <span class="price-old">R$ 19,90</span><span class="price-new">R$ 5,99</span>
-            <button class="btn-buy" onclick="add('Primer Pos Sol', 5.99)">Comprar</button>
-        </div>
-        <div class="product-card">
-            <div class="off-tag">50% OFF</div>
-            <img src="https://m.media-amazon.com/images/I/419X8fL+2aL._AC_SL1000_.jpg" class="product-img">
-            <div class="product-name">Blush Compacto Ruby Rose</div>
-            <span class="price-old">R$ 11,90</span><span class="price-new">R$ 5,99</span>
-            <button class="btn-buy" onclick="add('Blush Ruby Rose', 5.99)">Comprar</button>
-        </div>
-        <div class="product-card">
-            <div class="off-tag">46% OFF</div>
-            <img src="https://m.media-amazon.com/images/I/41K-o2XNnWL._AC_SL1000_.jpg" class="product-img">
-            <div class="product-name">Pó Compacto Feels Mood</div>
-            <span class="price-old">R$ 12,95</span><span class="price-new">R$ 6,95</span>
-            <button class="btn-buy" onclick="add('Po Feels Mood', 6.95)">Comprar</button>
-        </div>
     </div>
-    <div class="cart-float" onclick="send()">Finalizar Pedido: R$ <span id="total">0,00</span></div>
+    <footer>
+        <div class="footer-links"><a href="#">Sobre Nós</a> | <a href="#">Trocas</a></div>
+        <div class="pay-icons">💳 📱 📄</div>
+    </footer>
+    <div class="cart-float" onclick="send()">FINALIZAR PEDIDO: R$ <span id="total">0,00</span></div>
     <script>
+        let current = 0; const slides = document.querySelectorAll('.banner-slide');
+        setInterval(() => { if(slides.length){ slides[current].classList.remove('active'); current = (current + 1) % slides.length; slides[current].classList.add('active'); }}, 3000);
         var t=0; var items=[];
         function add(n,p){ t+=p; items.push(n); document.getElementById('total').innerHTML=t.toFixed(2).replace('.',','); alert(n+' adicionado!'); }
         function send(){
             if(t==0) return alert('Vazio!');
             var m=encodeURIComponent("Pedido WINX:\n"+items.join("\n")+"\nTotal: R$ "+t.toFixed(2));
             window.location.href="https://api.whatsapp.com/send?phone=5548999717451&text="+m;
+        }
+        function filter(cat){
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.style.display = (cat == 'all' || card.getAttribute('data-cat') == cat) ? 'block' : 'none';
+            });
         }
     </script>
 </body>
