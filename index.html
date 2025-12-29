@@ -3,217 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINX STORE | Luxury Beauty</title>
+    <title>WINX STORE | Florency</title>
     <style>
-        :root { --gold: #bc9c22; --dark: #000; --gray: #f4f4f4; }
-        body { font-family: 'Times New Roman', serif; background: #fff; margin: 0; padding-bottom: 120px; color: var(--dark); overflow-x: hidden; }
+        body { font-family: sans-serif; margin: 0; background: #f4f4f4; color: #333; padding-bottom: 70px; }
+        .top-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+        header { background: #fff; padding: 20px 15px; border-bottom: 1px solid #ddd; text-align: center; }
+        .logo { font-size: 24px; font-weight: bold; letter-spacing: 4px; margin: 0; text-transform: uppercase; }
+        .search-box { width: 90%; padding: 12px; margin: 15px auto; border: 1px solid #ccc; border-radius: 4px; display: block; background: #fff; }
+        .nav-menu { background: #fff; overflow-x: auto; white-space: nowrap; padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: flex-start; }
+        .nav-menu a { padding: 5px 15px; text-decoration: none; color: #666; font-size: 13px; font-weight: 600; text-transform: uppercase; }
         
-        .promo-bar { background: var(--dark); color: #fff; font-size: 10px; padding: 10px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
+        .product-card { background: #fff; border: 1px solid #eee; padding: 10px; position: relative; text-align: center; border-radius: 4px; }
+        .off-tag { position: absolute; top: 5px; left: 5px; background: #e60000; color: #fff; font-size: 10px; padding: 3px 6px; border-radius: 2px; font-weight: bold; }
+        .product-name { font-size: 12px; height: 35px; overflow: hidden; margin: 10px 0; color: #444; line-height: 1.2; }
+        .price-old { text-decoration: line-through; color: #999; font-size: 11px; display: block; }
+        .price-new { color: #e60000; font-weight: bold; font-size: 16px; margin: 5px 0 10px 0; display: block; }
+        .btn-buy { background: #28a745; color: #fff; border: none; width: 100%; padding: 10px; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 12px; }
         
-        header { padding: 30px 20px; text-align: center; border-bottom: 1px solid var(--gray); }
-        header h1 { margin: 0; font-size: 26px; font-weight: 300; letter-spacing: 5px; }
-        header p { font-size: 10px; margin-top: 5px; text-transform: uppercase; color: #888; letter-spacing: 2px; }
-
-        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #eee; border: 1px solid #eee; }
-        
-        .card { background: #fff; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; }
-        .card .tag { font-size: 9px; font-weight: bold; color: #888; text-transform: uppercase; margin-bottom: 5px; }
-        .card h3 { font-size: 13px; margin: 5px 0; font-weight: 600; text-transform: uppercase; line-height: 1.2; height: 32px; overflow: hidden; }
-        .card .desc { font-size: 11px; color: #666; margin-bottom: 8px; height: 28px; overflow: hidden; }
-        .card .cores { font-size: 10px; color: #999; margin-bottom: 10px; }
-        .card .preco { font-size: 15px; font-weight: bold; margin-bottom: 2px; }
-        .card .parcela { font-size: 10px; color: #999; margin-bottom: 15px; }
-        
-        .btn-buy { border: 1px solid var(--dark); background: transparent; color: var(--dark); padding: 8px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 10px; font-weight: bold; letter-spacing: 1px; }
-        .btn-buy:hover { background: var(--dark); color: #fff; }
-
-        .cart-fixed { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid #ddd; padding: 15px; box-sizing: border-box; text-align: center; z-index: 1000; }
-        .btn-checkout { background: var(--dark); color: #fff; padding: 15px; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; display: block; font-weight: bold; }
-    </style>
-</head>
-<body>
-    <div class="promo-bar">Cupom HOLIDAYBAG: Ganhe miniatura em pedidos acima de R$499</div>
-    
-    <header>
-        <h1>WINX STORE</h1>
-        <p>Concept Store 2025</p>
-    </header>
-
-    <div class="container">
-        <div class="card">
-            <div class="tag">NOVO</div>
-            <h3>Triple Moisture Serum Foundation</h3>
-            <p class="desc">Base com acabamento natural</p>
-            <p class="cores">16 Cores Disponíveis</p>
-            <p class="preco">R$ 449,00</p>
-            <p class="parcela">ou 6x de R$ 74,83</p>
-            <button class="btn-buy" onclick="add('Serum Foundation', 449)">Adicionar</button>
-        </div>
-
-        <div class="card">
-            <div class="tag">KIT</div>
-            <h3>M320 Essentials Set</h3>
-            <p class="desc">Combo 3 Produtos de Beleza</p>
-            <p class="cores">Edição Limitada</p>
-            <p class="preco">R$ 788,00</p>
-            <p class="parcela">ou 10x de R$ 78,80</p>
-            <button class="btn-buy" onclick="add('Essentials Set', 788)">Adicionar</button>
-        </div>
-
-        <div class="card">
-            <div class="tag">TOP</div>
-            <h3>Nude Couture Matte Bronzer</h3>
-            <p class="desc">Pó facial bronzeador</p>
-            <p class="cores">4 Cores Disponíveis</p>
-            <p class="preco">R$ 419,00</p>
-            <p class="parcela">ou 6x de R$ 69,83</p>
-            <button class="btn-buy" onclick="add('Matte Bronzer', 419)">Adicionar</button>
-        </div>
-
-        <div class="card">
-            <div class="tag">LUXO</div>
-            <h3>Kabuki Buffer Brush</h3>
-            <p class="desc">O Pincel Polidor Especial</p>
-            <p class="cores">Cerdas Sintéticas</p>
-            <p class="preco">R$ 2.400,00</p>
-            <p class="parcela">ou 6x de R$ 400,00</p>
-            <button class="btn-buy" onclick="add('Kabuki Brush', 2400)">Adicionar</button>
-        </div>
-
-        <div class="card">
-            <div class="tag">BRILHO</div>
-            <h3>Highlighter Cream To Powder</h3>
-
-cd ~/minha_loja && cat << 'EOF' > index.html
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINX STORE | Luxury</title>
-    <style>
-        :root { --dark: #000; --gray: #f4f4f4; }
-        body { font-family: serif; background: #fff; margin: 0; padding-bottom: 120px; color: var(--dark); }
-        .promo-bar { background: var(--dark); color: #fff; font-size: 10px; padding: 10px; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
-        header { padding: 30px 20px; text-align: center; border-bottom: 1px solid var(--gray); }
-        header h1 { margin: 0; font-size: 26px; font-weight: 300; letter-spacing: 5px; }
-        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #eee; }
-        .card { background: #fff; padding: 15px; display: flex; flex-direction: column; }
-        .tag { font-size: 9px; font-weight: bold; color: #888; text-transform: uppercase; margin-bottom: 5px; }
-        h3 { font-size: 13px; margin: 5px 0; font-weight: 600; text-transform: uppercase; height: 32px; overflow: hidden; }
-        .desc { font-size: 11px; color: #666; height: 28px; margin-bottom: 5px; }
-        .preco { font-size: 15px; font-weight: bold; margin: 5px 0; }
-        .btn-buy { border: 1px solid var(--dark); background: transparent; padding: 8px; cursor: pointer; text-transform: uppercase; font-size: 10px; font-weight: bold; }
-        .cart-fixed { position: fixed; bottom: 0; width: 100%; background: #fff; border-top: 1px solid #ddd; padding: 15px; box-sizing: border-box; }
-        .btn-checkout { background: var(--dark); color: #fff; padding: 15px; text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; display: block; text-align: center; }
-    </style>
-</head>
-<body>
-    <div class="promo-bar">Cupom HOLIDAYBAG: Miniatura em pedidos acima de R$499</div>
-    <header><h1>WINX STORE</h1><p>Concept Store 2025</p></header>
-
-cd ~/minha_loja && echo '<!DOCTYPE html><html lang="pt-br"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WINX STORE</title><style>body{font-family:serif;margin:0;padding-bottom:120px;color:#000}.promo-bar{background:#000;color:#fff;font-size:10px;padding:10px;text-align:center;text-transform:uppercase}header{padding:30px 20px;text-align:center;border-bottom:1px solid #f4f4f4}header h1{margin:0;font-size:26px;letter-spacing:5px}.container{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#eee}.card{background:#fff;padding:15px;display:flex;flex-direction:column}.tag{font-size:9px;font-weight:bold;color:#888;text-transform:uppercase}h3{font-size:13px;margin:5px 0;text-transform:uppercase;height:32px}.preco{font-size:15px;font-weight:bold;margin:5px 0}.btn-buy{border:1px solid #000;background:transparent;padding:8px;font-size:10px;font-weight:bold}.cart-fixed{position:fixed;bottom:0;width:100%;background:#fff;border-top:1px solid #ddd;padding:15px;box-sizing:border-box}.btn-checkout{background:#000;color:#fff;padding:15px;text-decoration:none;font-size:13px;display:block;text-align:center}</style></head><body>' > index.html
-
-echo '<div class="promo-bar">Cupom HOLIDAYBAG: Miniatura Grátis</div><header><h1>WINX STORE</h1><p>Concept Store 2025</p></header><div class="container">' >> index.html
-
-echo '<div class="card"><div class="tag">NOVO</div><h3>Serum Foundation</h3><p class="preco">R$ 449,00</p><button class="btn-buy" onclick="add('\''Serum'\'',449)">Adicionar</button></div><div class="card"><div class="tag">TOP</div><h3>Matte Bronzer</h3><p class="preco">R$ 419,00</p><button class="btn-buy" onclick="add('\''Bronzer'\'',419)">Adicionar</button></div>' >> index.html
-
-echo '</div><div class="cart-fixed"><a href="#" class="btn-checkout" onclick="send()">Finalizar: R$ <span id="total">0,00</span></a></div><script>var t=0;var items=[];function add(n,p){t+=p;items.push(n);document.getElementById("total").innerHTML=t.toFixed(2).replace(".",",");alert(n+" adicionado!")}function send(){if(t==0)return alert("Vazio!");var m=encodeURIComponent("Pedido WINX:\n"+items.join("\n")+"\nTotal: R$ "+t.toFixed(2));window.location.href="https://api.whatsapp.com/send?phone=5548999717451&text="+m}</script></body></html>' >> index.html
-
-git add . && git commit -m "Loja Carolina Herrera v1" && git push origin main
-
-git add . && git commit -m "Loja Carolina Herrera v1" && git push origin main
-
-git add .
-
-git commit -m "Loja de Luxo"
-
-git push origin main
-
-cd ~/minha_loja && curl -L https://pastebin.com/raw/p9Xv9v8r -o index.html && git add . && git commit -m "Reset luxo" && git push origin main
-
-cd ~/minha_loja && rm index.html && echo '<html><body style="background:black;color:white;display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;"><h1>WINX LUXO ATUALIZANDO...</h1></body></html>' > index.html
-
-git add . && git commit -m "Teste de Força" && git push origin main
-
-cd ~/minha_loja && cat << 'EOF' > index.html
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINX STORE | Florency Style</title>
-    <style>
-        body { font-family: sans-serif; margin: 0; background: #f8f8f8; color: #333; }
-        .top-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 11px; text-transform: uppercase; }
-        header { background: #fff; padding: 15px; border-bottom: 1px solid #ddd; text-align: center; }
-        .search-box { width: 90%; padding: 10px; margin: 10px auto; border: 1px solid #ccc; border-radius: 5px; display: block; }
-        .nav-menu { background: #fff; overflow-x: auto; white-space: nowrap; padding: 10px; border-bottom: 1px solid #eee; }
-        .nav-menu a { display: inline-block; padding: 5px 15px; text-decoration: none; color: #555; font-size: 13px; font-weight: bold; }
-        
-        .main-content { display: flex; padding: 10px; gap: 15px; }
-        .sidebar { width: 200px; display: none; } /* Escondido no mobile igual ao original */
-        @media(min-width: 768px) { .sidebar { display: block; } }
-        
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
-        .product-card { background: #fff; border: 1px solid #eee; padding: 10px; position: relative; text-align: center; }
-        .off-tag { position: absolute; top: 5px; left: 5px; background: #e60000; color: #fff; font-size: 10px; padding: 2px 5px; border-radius: 3px; }
-        .product-name { font-size: 12px; height: 35px; overflow: hidden; margin: 10px 0; color: #444; }
-        .price-old { text-decoration: line-through; color: #999; font-size: 11px; }
-        .price-new { color: #e60000; font-weight: bold; font-size: 16px; margin-bottom: 10px; }
-        .btn-buy { background: #28a745; color: #fff; border: none; width: 100%; padding: 8px; border-radius: 5px; font-weight: bold; cursor: pointer; }
-        
-        .cart-float { position: fixed; bottom: 0; width: 100%; background: #000; color: #fff; padding: 15px; text-align: center; font-weight: bold; cursor: pointer; }
+        .cart-float { position: fixed; bottom: 0; width: 100%; background: #000; color: #fff; padding: 15px; text-align: center; font-weight: bold; z-index: 1000; font-size: 14px; text-transform: uppercase; }
     </style>
 </head>
 <body>
     <div class="top-bar">Enviamos para todo o Brasil! @WINXSTORE</div>
     <header>
-        <h1 style="margin:0; letter-spacing: 2px;">WINX STORE</h1>
+        <h1 class="logo">WINX STORE</h1>
         <input type="text" class="search-box" placeholder="Pesquise aqui...">
     </header>
     <div class="nav-menu">
-        <a href="#">Maquiagem</a><a href="#">Skin Care</a><a href="#">Cabelos</a><a href="#">Perfumes</a><a href="#">Promoções</a>
+        <a href="#">Maquiagem</a><a href="#">Skin Care</a><a href="#">Cabelos</a><a href="#">Promoções</a>
+
+cat << 'EOF' >> index.html
     </div>
-    <div class="main-content">
-        <div class="grid">
-            <div class="product-card">
-                <div class="off-tag">54% OFF</div>
-                <div class="product-name">Esponja de Pó Powder Puff Glass - Ruby Rose</div>
-                <div class="price-old">R$ 9,95</div>
-                <div class="price-new">R$ 4,60</div>
-                <button class="btn-buy" onclick="add('Esponja Ruby Rose', 4.60)">COMPRAR</button>
-            </div>
-            <div class="product-card">
-                <div class="off-tag">50% OFF</div>
-                <div class="product-name">Balm Labial Mágico Melu Ruby Rose</div>
-                <div class="price-old">R$ 9,95</div>
-                <div class="price-new">R$ 4,99</div>
-                <button class="btn-buy" onclick="add('Balm Melu', 4.99)">COMPRAR</button>
-            </div>
-            <div class="product-card">
-                <div class="off-tag">85% OFF</div>
-                <div class="product-name">Delineador Mari Maria Cat Thin Spot</div>
-                <div class="price-old">R$ 46,95</div>
-                <div class="price-new">R$ 6,99</div>
-                <button class="btn-buy" onclick="add('Delineador Mari Maria', 6.99)">COMPRAR</button>
-            </div>
-            <div class="product-card">
-                <div class="off-tag">70% OFF</div>
-                <div class="product-name">Primer Facial Max Love Semente de Uva</div>
-                <div class="price-old">R$ 19,90</div>
-                <div class="price-new">R$ 5,99</div>
-                <button class="btn-buy" onclick="add('Primer Max Love', 5.99)">COMPRAR</button>
-            </div>
+    <div class="grid">
+        <div class="product-card">
+            <div class="off-tag">54% OFF</div>
+            <div class="product-name">Esponja de Pó Powder Puff Glass - Ruby Rose</div>
+            <span class="price-old">R$ 9,95</span>
+            <span class="price-new">R$ 4,60</span>
+            <button class="btn-buy" onclick="add('Esponja Ruby Rose', 4.60)">Comprar</button>
+        </div>
+        <div class="product-card">
+            <div class="off-tag">50% OFF</div>
+            <div class="product-name">Balm Labial Mágico Melu Ruby Rose</div>
+            <span class="price-old">R$ 9,95</span>
+            <span class="price-new">R$ 4,99</span>
+            <button class="btn-buy" onclick="add('Balm Melu', 4.99)">Comprar</button>
+        </div>
+        <div class="product-card">
+            <div class="off-tag">85% OFF</div>
+            <div class="product-name">Delineador Mari Maria Cat Thin Spot</div>
+            <span class="price-old">R$ 46,95</span>
+            <span class="price-new">R$ 6,99</span>
+            <button class="btn-buy" onclick="add('Delineador Mari Maria', 6.99)">Comprar</button>
+        </div>
+        <div class="product-card">
+            <div class="off-tag">70% OFF</div>
+            <div class="product-name">Primer Facial Max Love Semente de Uva</div>
+            <span class="price-old">R$ 19,90</span>
+            <span class="price-new">R$ 5,99</span>
+            <button class="btn-buy" onclick="add('Primer Max Love', 5.99)">Comprar</button>
         </div>
     </div>
-    <div class="cart-float" onclick="send()">FINALIZAR PEDIDO: R$ <span id="total">0,00</span></div>
+    <div class="cart-float" onclick="send()">Finalizar: R$ <span id="total">0,00</span></div>
     <script>
         var t=0; var items=[];
         function add(n,p){ t+=p; items.push(n); document.getElementById('total').innerHTML=t.toFixed(2).replace('.',','); alert(n+' adicionado!'); }
         function send(){
             if(t==0) return alert('Sacola vazia!');
-            var m=encodeURIComponent("Olá WINX! Quero comprar:\n"+items.join("\n")+"\nTotal: R$ "+t.toFixed(2));
+            var m=encodeURIComponent("Pedido WINX:\n"+items.join("\n")+"\nTotal: R$ "+t.toFixed(2));
             window.location.href="https://api.whatsapp.com/send?phone=5548999717451&text="+m;
         }
     </script>
