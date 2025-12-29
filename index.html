@@ -7,53 +7,84 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #D4AF37; --pink: #FF69B4; --dark: #1a1a1a; }
-        body { font-family: 'Poppins', sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background: #f9f9f9; margin: 0; padding: 0; padding-bottom: 80px; }
         header { background: var(--dark); color: white; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid var(--gold); }
         .category-title { padding: 10px 20px; font-weight: 600; color: var(--dark); border-left: 5px solid var(--gold); margin: 20px; background: #fff; }
         .card { background: white; margin: 15px; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
         .preco { color: var(--gold); font-size: 20px; font-weight: bold; margin: 10px 0; }
         .btn-add { background: var(--dark); color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer; width: 100%; font-weight: 600; transition: 0.3s; }
         .btn-add:hover { background: var(--gold); }
-        .cart-float { position: fixed; bottom: 20px; right: 20px; background: var(--gold); color: white; padding: 15px 25px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-decoration: none; }
+        .cart-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); text-decoration: none; display: flex; align-items: center; gap: 10px; z-index: 999; }
     </style>
 </head>
 <body>
     <header>
         <h1 style="margin:0; letter-spacing: 2px;">WINX STORE</h1>
-        <small>Concept Store 2025</small>
-    </header>
+        <small>Concept Store 2025</
+cat << 'EOF' > index.html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WINX STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --dark: #1a1a1a; }
+        body { font-family: 'Poppins', sans-serif; background: #f9f9f9; margin: 0; padding-bottom: 80px; }
+        header { background: var(--dark); color: white; padding: 20px; text-align: center; border-bottom: 3px solid var(--gold); }
+        .category-title { padding: 10px; font-weight: 600; border-left: 5px solid var(--gold); margin: 15px; background: #fff; }
+        .card { background: white; margin: 15px; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
+        .preco { color: var(--gold
 
-    <div class="category-title">✨ Beauty & Glow</div>
-    <div class="card">
-        <h3>Paleta Lux</h3>
-        <p>Cores vibrantes e alta fixação.</p>
-        <div class="preco">R$ 89,90</div>
-        <button class="btn-add">Adicionar</button>
-    </div>
+cd ~/minha_loja && touch index.html
 
-    <div class="card">
-        <h3>Batom Matte Gold</h3>
-        <p>Acabamento aveludado.</p>
-        <div class="preco">R$ 45,00</div>
-        <button class="btn-add">Adicionar</button>
-    </div>
+echo '<!DOCTYPE html><html lang="pt-br"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>WINX STORE</title><style>body{font-family:sans-serif;background:#f4f4f4;padding-bottom:80px}header{background:#1a1a1a;color:#D4AF37;text-align:center;padding:10px}.card{background:#fff;margin:10px;padding:15px;border-radius:8px;text-align:center;border:1px solid #ddd}.btn{background:#1a1a1a;color:#fff;padding:10px;width:100%;border-radius:5px}.cart-btn{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;padding:15px;border-radius:50px;text-decoration:none;font-weight:bold}</style></head>' > index.html
 
-    <div class="category-title">💎 Perfumaria Importada</div>
-    <div class="card">
-        <h3>Oud Wood Intense</h3>
-        <p>Fragrância marcante e sofisticada.</p>
-        <div class="preco">R$ 459,00</div>
-        <button class="btn-add">Adicionar</button>
-    </div>
+echo '<body><header><h1>WINX STORE</h1><p>Concept Store 2025</p></header><div class="card"><h3>Paleta Lux</h3><p>R$ 89,90</p><button class="btn" onclick="add(\'Paleta Lux\', 89.90)">Adicionar</button></div><div class="card"><h3>Batom Matte</h3><p>R$ 45,00</p><button class="btn" onclick="add(\'Batom Matte\', 45.00)">Adicionar</button></div><div class="card"><h3>Blazer Slim</h3><p>R$ 349,00</p><button class="btn" onclick="add(\'Blazer Slim\', 349.00)">Adicionar</button></div>' >> index.html
 
-    <div class="category-title">👔 Mens Fashion</div>
-    <div class="card">
-        <h3>Blazer Slim Black</h3>
-        <p>Corte italiano sob medida.</p>
-        <div class="preco">R$ 349,00</div>
-        <button class="btn-add">Adicionar</button>
-    </div>
+echo '<a href="#" class="cart-btn" onclick="send()">🛒 Pedir no WhatsApp: R$ <span id="total">0,00</span></a><script>let items=[];let total=0;function add(n,p){items.push(n);total+=p;document.getElementById("total").innerText=total.toFixed(2);alert(n+" na sacola!")}function send(){if(items.length===0)return alert("Sacola vazia!");let m=encodeURIComponent("Olá! Quero pedir:\n"+items.join("\n")+"\nTotal: R$ "+total.toFixed(2));window.open("https://wa.me/5548999717451?text="+m)}</script></body></html>' >> index.html
 
-    <a href="https://wa.me/5500000000000" class="cart-float">🛒 Ver Sacola (R$ 0,00)</a>
+git add . && git commit -m "Loja 100 por cento" && git push origin main
+
+cd ~/minha_loja && cat << 'EOF' > index.html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WINX STORE</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; margin: 0; padding-bottom: 100px; text-align: center; }
+        header { background: #1a1a1a; color: #D4AF37; padding: 20px; border-bottom: 3px solid #D4AF37; }
+        .card { background: #fff; margin: 15px; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .preco { color: #D4AF37; font-size: 22px; font-weight: bold; }
+        .btn { background: #1a1a1a; color: #fff; padding: 12px; width: 100%; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; }
+        .cart-btn { position: fixed; bottom: 0; left: 0; right: 0; background: #25d366; color: #fff; padding: 20px; text-decoration: none; font-size: 18px; font-weight: bold; z-index: 1000; border: none; width: 100%; }
+    </style>
+</head>
+<body>
+    <header><h1>WINX STORE</h1><p>Concept Store 2025</p></header>
+    <div class="card"><h3>Paleta Lux</h3><p class="preco">R$ 89,90</p><button class="btn" onclick="add('Paleta Lux', 89.90)">Adicionar à Sacola</button></div>
+    <div class="card"><h3>Batom Matte Gold</h3><p class="preco">R$ 45,00</p><button class="btn" onclick="add('Batom Matte Gold', 45.00)">Adicionar à Sacola</button></div>
+    <div class="card"><h3>Oud Wood Intense</h3><p class="preco">R$ 459,00</p><button class="btn" onclick="add('Oud Wood Intense', 459.00)">Adicionar à Sacola</button></div>
+    <div class="card"><h3>Blazer Slim Black</h3><p class="preco">R$ 349,00</p><button class="btn" onclick="add('Blazer Slim Black', 349.00)">Adicionar à Sacola</button></div>
+    
+    <button class="cart-btn" onclick="send()">🛒 FINALIZAR PEDIDO: R$ <span id="total">0,00</span></button>
+
+    <script>
+        let items = []; let total = 0;
+        function add(n, p) { 
+            items.push(n); 
+            total += p; 
+            document.getElementById('total').innerText = total.toLocaleString('pt-br', {minimumFractionDigits: 2});
+            alert('✓ ' + n + ' adicionado!'); 
+        }
+        function send() {
+            if(items.length === 0) { alert('Sua sacola está vazia!'); return; }
+            let msg = encodeURIComponent('Olá! Quero fazer esse pedido:\n\n' + items.join('\n') + '\n\nTotal: R$ ' + total.toFixed(2));
+            window.open('https://wa.me/5548999717451?text=' + msg);
+        }
+    </script>
 </body>
 </html>
