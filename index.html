@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WINX STORE | Florency</title>
+    <title>WINX STORE | Florency Style</title>
     <style>
         body { font-family: sans-serif; margin: 0; background: #f4f4f4; padding-bottom: 80px; }
         .top-bar { background: #000; color: #fff; text-align: center; padding: 10px; font-size: 11px; text-transform: uppercase; }
@@ -14,7 +14,7 @@
         .nav-menu a { padding: 5px 12px; text-decoration: none; color: #666; font-size: 12px; font-weight: bold; text-transform: uppercase; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
         .product-card { background: #fff; border: 1px solid #eee; padding: 10px; position: relative; text-align: center; border-radius: 4px; }
-        .off-tag { position: absolute; top: 5px; left: 5px; background: #e60000; color: #fff; font-size: 10px; padding: 3px 6px; border-radius: 2px; font-weight: bold; }
+        .off-tag { position: absolute; top: 5px; left: 5px; background: #e60000; color: #fff; font-size: 10px; padding: 3px 6px; border-radius: 2px; font-weight: bold; z-index: 5; }
         .product-img { width: 100%; height: 130px; object-fit: contain; margin-bottom: 10px; }
         .product-name { font-size: 11px; height: 30px; overflow: hidden; margin: 5px 0; color: #444; }
         .price-old { text-decoration: line-through; color: #999; font-size: 10px; display: block; }
@@ -56,6 +56,34 @@
             <span class="price-old">R$ 19,90</span><span class="price-new">R$ 5,99</span>
             <button class="btn-buy" onclick="add('Primer Max Love', 5.99)">Comprar</button>
         </div>
+        <div class="product-card">
+            <div class="off-tag">25% OFF</div>
+            <img src="https://m.media-amazon.com/images/I/41Osh96V8wL._AC_SL1000_.jpg" class="product-img">
+            <div class="product-name">Pó Compacto Matte Max Love</div>
+            <span class="price-old">R$ 7,95</span><span class="price-new">R$ 5,99</span>
+            <button class="btn-buy" onclick="add('Po Max Love', 5.99)">Comprar</button>
+        </div>
+        <div class="product-card">
+            <div class="off-tag">70% OFF</div>
+            <img src="https://m.media-amazon.com/images/I/51f93mP64LL._AC_SL1000_.jpg" class="product-img">
+            <div class="product-name">Primer Max Love Pós Sol</div>
+            <span class="price-old">R$ 19,90</span><span class="price-new">R$ 5,99</span>
+            <button class="btn-buy" onclick="add('Primer Pos Sol', 5.99)">Comprar</button>
+        </div>
+        <div class="product-card">
+            <div class="off-tag">50% OFF</div>
+            <img src="https://m.media-amazon.com/images/I/419X8fL+2aL._AC_SL1000_.jpg" class="product-img">
+            <div class="product-name">Blush Compacto Ruby Rose</div>
+            <span class="price-old">R$ 11,90</span><span class="price-new">R$ 5,99</span>
+            <button class="btn-buy" onclick="add('Blush Ruby Rose', 5.99)">Comprar</button>
+        </div>
+        <div class="product-card">
+            <div class="off-tag">46% OFF</div>
+            <img src="https://m.media-amazon.com/images/I/41K-o2XNnWL._AC_SL1000_.jpg" class="product-img">
+            <div class="product-name">Pó Compacto Feels Mood</div>
+            <span class="price-old">R$ 12,95</span><span class="price-new">R$ 6,95</span>
+            <button class="btn-buy" onclick="add('Po Feels Mood', 6.95)">Comprar</button>
+        </div>
     </div>
     <div class="cart-float" onclick="send()">Finalizar Pedido: R$ <span id="total">0,00</span></div>
     <script>
@@ -64,10 +92,7 @@
         function send(){
             if(t==0) return alert('Vazio!');
             var m=encodeURIComponent("Pedido WINX:\n"+items.join("\n")+"\nTotal: R$ "+t.toFixed(2));
-            window.location.href="https://api.whatsapp
-
-cat << 'EOF' >> index.html
-.com/send?phone=5548999717451&text="+m;
+            window.location.href="https://api.whatsapp.com/send?phone=5548999717451&text="+m;
         }
     </script>
 </body>
